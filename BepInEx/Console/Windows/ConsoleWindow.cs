@@ -4,15 +4,13 @@
 // --------------------------------------------------
 
 using System;
-using System.IO;
 using System.Runtime.InteropServices;
 using BepInEx;
 using BepInEx.ConsoleUtil;
-using MonoMod.Utils;
 
 namespace UnityInjector.ConsoleUtil
 {
-	internal class ConsoleWindow
+	internal static class ConsoleWindow
 	{
 		private const uint SC_CLOSE = 0xF060;
 		private const uint MF_BYCOMMAND = 0x00000000;
@@ -118,11 +116,13 @@ namespace UnityInjector.ConsoleUtil
 
 			// Some games may ship user32.dll with some methods missing. As such, we load the DLL explicitly from system folder
 			var user32Dll = LoadLibraryEx("user32.dll", IntPtr.Zero, LOAD_LIBRARY_SEARCH_SYSTEM32);
-			setForeground = GetProcAddress(user32Dll, "SetForegroundWindow").AsDelegate<SetForegroundWindowDelegate>();
-			getForeground = GetProcAddress(user32Dll,"GetForegroundWindow").AsDelegate<GetForegroundWindowDelegate>();
-			getSystemMenu = GetProcAddress(user32Dll,"GetSystemMenu").AsDelegate<GetSystemMenuDelegate>();
-			deleteMenu = GetProcAddress(user32Dll,"DeleteMenu").AsDelegate<DeleteMenuDelegate>();
+			setForeground = AsDelegate<SetForegroundWindowDelegate>(GetProcAddress(user32Dll, "SetForegroundWindow"));
+			getForeground = AsDelegate<GetForegroundWindowDelegate>(GetProcAddress(user32Dll, "GetForegroundWindow"));
+			getSystemMenu = AsDelegate<GetSystemMenuDelegate>(GetProcAddress(user32Dll, "GetSystemMenu"));
+			deleteMenu = AsDelegate<DeleteMenuDelegate>(GetProcAddress(user32Dll, "DeleteMenu"));
 		}
+
+		private static T AsDelegate<T>(IntPtr s) where T : class => Marshal.GetDelegateForFunctionPointer(s, typeof(T)) as T;
 		
 		[DllImport("kernel32.dll", SetLastError=true)]
 		static extern IntPtr GetProcAddress(IntPtr hModule, string procName);

@@ -5,6 +5,7 @@ using System.Reflection;
 using BepInEx.Preloader;
 using BepInEx.Preloader.RuntimeFixes;
 using Doorstop;
+using MonoMod.Utils;
 
 namespace BepInEx.Preloader
 {
@@ -45,8 +46,6 @@ namespace BepInEx.Preloader
 
 		public static void PreloaderPreMain()
 		{
-			PlatformUtils.SetPlatform();
-
 			string bepinPath = Utility.ParentDirectory(Path.GetFullPath(EnvVars.DOORSTOP_INVOKE_DLL_PATH), 2);
 
 			Paths.SetExecutablePath(EnvVars.DOORSTOP_PROCESS_PATH, bepinPath, EnvVars.DOORSTOP_MANAGED_FOLDER_DIR, EnvVars.DOORSTOP_DLL_SEARCH_DIRS);
@@ -92,8 +91,8 @@ namespace BepInEx.Preloader
 				return foundAssembly;
 			
 			if (Utility.TryResolveDllAssembly(assemblyName, Paths.BepInExAssemblyDirectory, out foundAssembly)
-				|| Utility.TryResolveDllAssembly(assemblyName, Paths.PatcherPluginPath, out foundAssembly)
-				|| Utility.TryResolveDllAssembly(assemblyName, Paths.PluginPath, out foundAssembly))
+				|| (Directory.Exists(Paths.PatcherPluginPath) && Utility.TryResolveDllAssembly(assemblyName, Paths.PatcherPluginPath, out foundAssembly))
+				|| (Directory.Exists(Paths.PluginPath) && Utility.TryResolveDllAssembly(assemblyName, Paths.PluginPath, out foundAssembly)))
 				return foundAssembly;
 
 			return null;

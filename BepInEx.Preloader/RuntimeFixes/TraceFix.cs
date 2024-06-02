@@ -36,7 +36,7 @@ namespace BepInEx.Preloader.RuntimeFixes
 			prop_AutoFlush = AccessTools.Property(TraceImplType, "AutoFlush");
 
 
-			HarmonyLib.Harmony instance = new HarmonyLib.Harmony("com.bepis.bepinex.tracefix");
+			Harmony instance = new Harmony("com.bepis.bepinex.tracefix");
 
 			instance.Patch(
 				typeof(Trace).GetMethod("DoTrace", BindingFlags.Static | BindingFlags.NonPublic),
