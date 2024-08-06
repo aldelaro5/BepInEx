@@ -51,6 +51,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doorstop", "Doorstop", "{CE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "build\Build.csproj", "{0C38DDF2-EAAA-43FA-BA0A-985636AC6040}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSus", "TestSus\TestSus.csproj", "{90C3E8E1-5195-41EB-873A-82EBA38AB91E}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		BepInEx.NetLauncher.Shared\BepInEx.NetLauncher.Shared.projitems*{067bcc8c-fc25-4929-b4f4-c6a5a7496994}*SharedItemsImports = 13
@@ -147,6 +149,14 @@ Global
 		{0C38DDF2-EAAA-43FA-BA0A-985636AC6040}.Release_Unity|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C38DDF2-EAAA-43FA-BA0A-985636AC6040}.Release_Unity|Any CPU.Build.0 = Debug|Any CPU
 		{0C38DDF2-EAAA-43FA-BA0A-985636AC6040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C3E8E1-5195-41EB-873A-82EBA38AB91E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C3E8E1-5195-41EB-873A-82EBA38AB91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C3E8E1-5195-41EB-873A-82EBA38AB91E}.Release_NetFramework|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C3E8E1-5195-41EB-873A-82EBA38AB91E}.Release_NetFramework|Any CPU.Build.0 = Debug|Any CPU
+		{90C3E8E1-5195-41EB-873A-82EBA38AB91E}.Release_Unity|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C3E8E1-5195-41EB-873A-82EBA38AB91E}.Release_Unity|Any CPU.Build.0 = Debug|Any CPU
+		{90C3E8E1-5195-41EB-873A-82EBA38AB91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C3E8E1-5195-41EB-873A-82EBA38AB91E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

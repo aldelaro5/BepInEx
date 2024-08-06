@@ -221,7 +221,7 @@ internal static partial class Il2CppInteropManager
                                 DetourProvider = new Il2CppInteropDetourProvider()
                             })
                             .AddLogger(interopLogger)
-                            .AddHarmonySupport()
+                            // .AddHarmonySupport()
                             .Start();
     }
 
